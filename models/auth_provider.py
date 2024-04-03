@@ -2,7 +2,7 @@ import enum
 from sqlalchemy import Enum
 
 
-class AuthProviderEnum(enum.Enum):
+class AuthProviderEnum(str, enum.Enum):
     'google'
     'github'
 
