@@ -24,5 +24,6 @@ class Profile(SQLModel, table=True):
     skills: list[Skill] = Relationship()
     education: list[Education] = Relationship()
     experience: list[Experience] = Relationship()
-    avatar: Avatar = Relationship()
     languages: list[Language] = Relationship()
+
+    avatar: Avatar = Relationship()
