@@ -9,6 +9,12 @@ def get_by_email(email: str, session: Session):
 
     return user
 
+def get_by_nik(nik: str, session: Session):
+    sql_query = select(User).where(User.nik == nik)
+    user = session.exec(sql_query).first()
+
+    return user
+
 
 def get_by_id(user_id: int, session: Session):
     sql_query = select(User).where(User.id == user_id)
@@ -63,8 +69,8 @@ def modify(
             return (False, "User already has that nik")
         elif not is_nik_free(nik=nik, session=session):
             return (False, f"The '{nik}' nik is already taken")
-        else:
-            user.nik = nik
+    
+    user.nik = nik
 
     session.add(user)
     session.commit()
